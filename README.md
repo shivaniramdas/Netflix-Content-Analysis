@@ -1,5 +1,6 @@
 # Netflix-Content-Analysis
-Explore my viewing preferences on Netflix
+
+> This project was taken up to explore my viewing preferences on Netflix. I am a big fan of the 90's bollywood movies but when it comes to TV shows, Hollywood, no doubt! What can i expect on Netflix in terms of my genre selection or choice of streaming? 
 
 ## About
 
@@ -34,7 +35,6 @@ I have tried to look the data from a crude perspective and answer the following 
 * How 'old' is the content on Netflix? 
 * Are there more documentaries or comedies, thrillers or actions, stand-ups or dramas? 
 * What actors do we see more often on Netflix? 
-* I am a big fan of the 90's bollywood movies.What can i expect?
 * Is the average length of a movie gradually increases as consumers have more and more opportunities to enjoy them in the comfort of their home?
 
 I have also used the the description column of the data to create clusters and find similar content. 
