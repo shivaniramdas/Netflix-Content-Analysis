@@ -40,7 +40,34 @@ I have tried to look the data from a crude perspective and answer the following 
 I have also used the the description column of the data to create clusters and find similar content. 
 
 ```
-function test() {
-  console.log("notice the blank line before this function?");
-}
+text_content = df['description']
+vector = TfidfVectorizer(max_df=0.4,                    
+                             min_df=1,                 
+                             stop_words='english',
+                             lowercase=True, 
+                             use_idf=True, 
+                             norm=u'l2',
+                             smooth_idf=True    
+                            )
+tfidf = vector.fit_transform(text_content)
+```
+```
+k = 200
+kmeans = MiniBatchKMeans(n_clusters = k)
+kmeans.fit(tfidf)
+centers = kmeans.cluster_centers_.argsort()[:,::-1]
+terms = vector.get_feature_names()
+
+for i in range(0,k):
+    word_list=[]
+    print("cluster%d:"% i)
+    for j in centers[i,:10]:
+        word_list.append(terms[j])
+    print(word_list) 
+```
+```
+def find_similar(tfidf_matrix, index, top_n = 5):
+    cosine_similarities = linear_kernel(tfidf_matrix[index:index+1], tfidf_matrix).flatten()
+    related_docs_indices = [i for i in cosine_similarities.argsort()[::-1] if i != index]
+    return [index for index in related_docs_indices][0:top_n]  
 ```
